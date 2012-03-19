@@ -40,6 +40,10 @@ class horsesGame(tablero: Array[Position], inicio: Array[Horse], val paraGanar: 
 		}
 		true
 	}
+	
+	def pr(valid:Boolean, win:Boolean): Unit = {
+		println("Movimiento válido: "+ valid + " Gana el juego: " + win)
+	}
 	/**
 	 * 
 	 * @param horse
@@ -145,14 +149,12 @@ object horsesApp extends Application {
 		val game = new horsesGame(tablero, inicio, fin)
 		
 
+		val moves = List[(Horse,Position)] = (
+			(BH1, new Position(2,3)
+			(BH1, new Position(3,1)
+		)
 		
-		var (valid:Boolean, win:Boolean) = game.move(BH1, new Position(2,3))
-		var (valid2:Boolean, win2:Boolean) = game.move(BH1, new Position(3,1))
-
-		println(valid)
-		println(valid2)
-		
-		
+		moves.foreach( (h:Horse,p:Position) => pr(game.move(h,p)))		
 		
 		println(BH1.position)
 	}
