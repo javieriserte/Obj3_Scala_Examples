@@ -154,7 +154,7 @@ object horsesApp extends Application {
 			(BH1, new Position(3,1)
 		)
 		
-		moves.foreach( (h:Horse,p:Position) => pr(game.move(h,p)))		
+		moves.foreach( t:(Horse,Position) => (h,p) = t ; pr(game.move(h,p)))		
 		
 		println(BH1.position)
 	}
