@@ -41,8 +41,8 @@ class horsesGame(tablero: Array[Position], inicio: Array[Horse], val paraGanar: 
 		true
 	}
 	
-	def pr(valid:Boolean, win:Boolean): Unit = {
-		println("Movimiento válido: "+ valid + " Gana el juego: " + win)
+	def pr(t:(Boolean, Boolean)): Unit = {
+		println("Movimiento válido: "+ t._1 + " Gana el juego: " + t._2)
 	}
 	/**
 	 * 
@@ -60,7 +60,7 @@ class horsesGame(tablero: Array[Position], inicio: Array[Horse], val paraGanar: 
 		if (dx==2&&dy==1||dx==1&&dy==2) {
 			println("primer punto de control pasado")
 			
-			// verifica que el Horse pasado por parÃ¡metro estÃ© realmente en el tablero
+			// verifica que el Horse pasado por parámetro esté realmente en el tablero
 			var isInGame = false
 			inicio.foreach((h:Horse) => isInGame = (isInGame || h==horse))
 			inicio.foreach((h:Horse) => println(h))
@@ -68,12 +68,12 @@ class horsesGame(tablero: Array[Position], inicio: Array[Horse], val paraGanar: 
 			println("esta en juego:" + isInGame)
 			
 			if (isInGame) {
-				// verifica que la posiciÃ³n a la que se quiere ir no estÃ© ocupada
+				// verifica que la posición a la que se quiere ir no esté ocupada
 				var isCellOcupied = false
 				inicio.foreach((h:Horse) => isCellOcupied = (h.position equals newPosition) || isCellOcupied)
 				
 				if (!isCellOcupied) {
-					// Verifica que la posiciÃ³n a la que se quiere ir estÃ© en el tablero
+					// Verifica que la posición a la que se quiere ir está en el tablero
 					var cellExists = false
 					tablero.foreach((h:Position) => cellExists = (h equals newPosition) || cellExists )
 					
@@ -149,12 +149,12 @@ object horsesApp extends Application {
 		val game = new horsesGame(tablero, inicio, fin)
 		
 
-		val moves = List[(Horse,Position)] = (
-			(BH1, new Position(2,3)
-			(BH1, new Position(3,1)
+		val moves = List[(Horse,Position)](
+			(BH1, new Position(2,3)),
+			(BH1, new Position(3,1))
 		)
 		
-		moves.foreach( t:(Horse,Position) => (h,p) = t ; pr(game.move(h,p)))		
+		moves.foreach( (t:(Horse,Position) => game.pr(game.move(t._1,t._2)))		
 		
 		println(BH1.position)
 	}
