@@ -202,16 +202,16 @@ object rbt extends Application {
 //		rb = rb insert 5
 //		println ("2 está en el árbol?: " + (rb member 2))
 //		println ("5 está en el árbol?: " + (rb member 5))
-
-		(Array(1,2,3,4,5,6,7)).foreach((a:Int)=> rb = rb insert a)
+		var r = (1 to 1000) 
+		r.foreach((a:Int)=> rb = rb insert a)
 
 		rb show
 		
-		(Array(1,2,3,4,5,6,7)).foreach{(a:Int)=> 
+		r.foreach{(a:Int)=> 
 			rb = rb delete a
 			rb show
 		};
-	
+
 	}
 }
 
