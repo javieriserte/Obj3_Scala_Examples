@@ -46,7 +46,7 @@ def member(value:Int): Boolean = this match {
 
 def show():Unit = this match {
 	case Empty() => Unit
-	case Node(c , l, v, r) => print("("); l show; c show; print(v) ; r show; print(")")
+	case Node(c , l, v, r) => print("("); l show; c show; print (":{"+ v + "}") ; r show; print(")")
 	}
 
 ////////////////////
@@ -68,7 +68,6 @@ private def balance(l:RedBlackTree, value:Int, r:RedBlackTree): RedBlackTree = (
 	case ( l1, v1, r1)                                          => Node(rbBlack(), l1,v1,r1)
 	}
 }
-
 case class Empty() extends RedBlackTree 
 case class Node(color:rbColor, left:RedBlackTree, value:Int, right:RedBlackTree) extends RedBlackTree
 
@@ -81,11 +80,11 @@ object rbt extends Application {
 		
 
 		rb = rb insert 5
-		print(rb member 5)
-		rb = rb insert 4 
-		rb = rb insert 3 
-		rb = rb insert 2 
-		rb = rb insert 1		
+		println ("2 está en el árbol?: " + (rb member 2))
+		println ("5 está en el árbol?: " + (rb member 5))
+
+		(Array(1,3,7,6,8,9,2)).foreach((a:Int)=> rb = rb insert a)
+
 		rb show
 		
 	}
